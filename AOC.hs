@@ -2,9 +2,11 @@ module AOC (
 	readAsListOfInt,
 	readAsListOfString,
 	readStringAsListOfInt,
+	convertStringToListOfInt,
 ) where
 
 import Data.List.Split
+import Data.Char (digitToInt)
 
 -- Useful when the input is a file with multiple lines
 -- with exactly one Int per line.
@@ -24,3 +26,6 @@ readAsListOfString file = do
 readStringAsListOfInt file = do
 	input <- readFile file
 	return $ map (\x -> read x :: Int) $ splitOn "," input
+
+convertStringToListOfInt :: String -> [Int]
+convertStringToListOfInt = map digitToInt

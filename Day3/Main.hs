@@ -5,18 +5,12 @@ module Day3.Main (
 
 import AOC
 import Data.List
-import Data.Char
 
 task1 = do
 	input <- readAsListOfString "Day3/input.txt"
 	let lengthOfInput = length input
 	let (gamma, epsilon) = calculateRates lengthOfInput $ map sum $ map convertStringToListOfInt $ transpose input
 	print (gamma * epsilon)
-
-convertStringToListOfInt :: String -> [Int]
-convertStringToListOfInt = map digitToInt
-
-
 
 calculateRates :: Int -> [Int] -> (Int, Int)
 calculateRates size list = (binToDec $ map (\x -> if 2 * x > size then 1 else 0) list, binToDec $ map (\x -> if 2 * x > size then 0 else 1) list)
